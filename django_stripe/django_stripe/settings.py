@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
+    'stripe_payment',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'django_stripe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,3 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STRIPE_PUBLIC_KEY = "pk_test_51LiNQfIVxJYT0CqkZ2oaZqAlJtCEqv0Q6U575wvZTLdqzc2ncpAMDk1BXSiyzygaN3JuHGcQgfXp5UN8lPWC7ByN00U5fZAw9d"
+STRIPE_SECRET_KEY = "sk_test_51LiNQfIVxJYT0CqkEc6FinFkBbvrLzA3GS9U6djNZCtGhwsYWIjUyekbF8iDuXW1RzRDRVzBuHqMYiaJC2t8hysG00Vy2m8iju"
+STRIPE_WEBHOOK_SECRET = ""
