@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os.path
+from dotenv import load_dotenv
 from pathlib import Path
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,9 +80,9 @@ WSGI_APPLICATION = 'django_stripe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'payment',
-        'USER': 'postgres',
-        'PASSWORD': 'railkha175',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('PG_USER'),
+        'PASSWORD': os.getenv('PG_PASS'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -130,6 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STRIPE_PUBLIC_KEY = "pk_test_51LiNQfIVxJYT0CqkZ2oaZqAlJtCEqv0Q6U575wvZTLdqzc2ncpAMDk1BXSiyzygaN3JuHGcQgfXp5UN8lPWC7ByN00U5fZAw9d"
-STRIPE_SECRET_KEY = "sk_test_51LiNQfIVxJYT0CqkEc6FinFkBbvrLzA3GS9U6djNZCtGhwsYWIjUyekbF8iDuXW1RzRDRVzBuHqMYiaJC2t8hysG00Vy2m8iju"
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 STRIPE_WEBHOOK_SECRET = ""
